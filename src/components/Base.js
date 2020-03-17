@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
 import { AddTask, CreateTag } from "./modals";
 import { Filters } from "./Filters";
-import { TagsApi } from "../api/TagsApi";
+import { TagsActions } from "../store/ducks/tags/actions";
 
 export const Base = () => {
-  const [tagsList, setTagsList] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const retrieveTags = async () => {
-      try {
-        const response = await TagsApi.listTags();
-        setTagsList(response);
-      } catch (error) {
-        throw new Error(error);
-      }
-    };
-
-    retrieveTags();
-  }, []);
-
-  console.log(tagsList);
+    dispatch(TagsActions.getTags());
+  }, [dispatch]);
 
   return (
     <Container>
