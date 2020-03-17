@@ -1,3 +1,4 @@
 import React from "react";
+import { Base } from "./components/Base";
 
-export const App = () => <div className="App" />;
+export const App = () => <Base />;
