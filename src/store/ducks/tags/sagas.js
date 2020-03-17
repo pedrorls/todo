@@ -10,3 +10,12 @@ export function* listTags() {
     throw new Error(error);
   }
 }
+
+export function* createTag(param) {
+  try {
+    const response = yield call(TagsApi.createTag, param.payload);
+    yield put(TagsActions.success_create_tag(response));
+  } catch (error) {
+    throw new Error(error);
+  }
+}
