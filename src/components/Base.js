@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
 import { AddTask, CreateTag } from "./modals";
 import { Filters } from "./Filters";
+import { TagsApi } from "../api/TagsApi";
 
-export const Base = props => {
+export const Base = () => {
+  const [tagsList, setTagsList] = useState([]);
+
+  useEffect(() => {
+    const retrieveTags = async () => {
+      try {
+        const response = await TagsApi.listTags();
+        setTagsList(response);
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    retrieveTags();
+  }, []);
+
+  console.log(tagsList);
+
   return (
     <Container>
       <Grid centered>
