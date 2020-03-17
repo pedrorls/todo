@@ -15,8 +15,8 @@ export const TagsApi = {
     return response.data;
   },
 
-  createTag: async values => {
-    const response = await api.post("", values);
+  createTag: async value => {
+    const response = await api.post("", { name: value });
     return response.data;
   },
 
