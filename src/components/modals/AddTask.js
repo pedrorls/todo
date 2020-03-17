@@ -1,7 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Modal, Popup, Button, Icon, Form } from "semantic-ui-react";
+import { getTagsList } from "../../store/ducks/tags/selectors";
 
 export const AddTask = () => {
+  const tagsList = useSelector(getTagsList);
+
+  const tagsOptions = tagsList.map(tag => ({
+    key: tag.id,
+    value: tag.name,
+    text: tag.name
+  }));
+
   return (
     <Modal
       closeIcon
@@ -32,6 +42,15 @@ export const AddTask = () => {
             label="Data de Vencimento"
             placeholder="Data de Vencimento"
             type="date"
+          />
+          <Form.Dropdown
+            fluid
+            multiple
+            search
+            selection
+            label="Tags"
+            placeholder="Tags"
+            options={tagsOptions}
           />
           <Form.Dropdown
             fluid
