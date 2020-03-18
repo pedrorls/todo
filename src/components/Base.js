@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
-import { AddTask, CreateTag } from "./modals";
-import { Filters } from "./Filters";
+
 import { TagsActions } from "../store/ducks/tags/actions";
 import { TasksActions } from "../store/ducks/tasks/actions";
+import { AddTask, CreateTag } from "./modals";
+import { Filters } from "./Filters";
+import { TaskList } from "./TaskList";
 
 export const Base = () => {
   const dispatch = useDispatch();
@@ -41,7 +43,9 @@ export const Base = () => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
-          <Grid.Column width={12}></Grid.Column>
+          <Grid.Column width={12}>
+            <TaskList />
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>

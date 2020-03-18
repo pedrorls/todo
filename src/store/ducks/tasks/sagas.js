@@ -14,7 +14,16 @@ export function* listTasks() {
 export function* createTask(param) {
   try {
     const response = yield call(TasksApi.createTask, param.payload);
-    yield put(TasksActions.success_create_task(response));
+    yield put(TasksActions.successCreateTask(response));
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export function* deleteTask(param) {
+  try {
+    const response = yield call(TasksApi.deleteTask, param.payload);
+    yield put(TasksActions.successDeleteTask(response));
   } catch (error) {
     throw new Error(error);
   }

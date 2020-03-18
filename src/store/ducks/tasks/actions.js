@@ -11,13 +11,23 @@ export const TasksActions = {
     payload: params
   }),
 
+  deleteTask: params => ({
+    type: TasksTypes.DELETE_TASK,
+    payload: params
+  }),
+
   success: response => ({
     type: TasksTypes.SUCCESS,
     payload: response
   }),
 
-  success_create_task: response => ({
+  successCreateTask: response => ({
     type: TasksTypes.SUCCESS_CREATE_TASK,
+    payload: response
+  }),
+
+  successDeleteTask: response => ({
+    type: TasksTypes.SUCCESS_DELETE_TASK,
     payload: response
   })
 };

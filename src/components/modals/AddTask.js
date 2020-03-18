@@ -41,7 +41,7 @@ export const AddTask = () => {
             id="form-input-duedate"
             label="Data de Vencimento"
             placeholder="Data de Vencimento"
-            type="date"
+            type="datetime-local"
           />
           <Form.Dropdown
             fluid
