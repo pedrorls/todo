@@ -4,12 +4,14 @@ import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
 import { AddTask, CreateTag } from "./modals";
 import { Filters } from "./Filters";
 import { TagsActions } from "../store/ducks/tags/actions";
+import { TasksActions } from "../store/ducks/tasks/actions";
 
 export const Base = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(TagsActions.getTags());
+    dispatch(TasksActions.getTasks());
   }, [dispatch]);
 
   return (

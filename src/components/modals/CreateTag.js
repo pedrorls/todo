@@ -38,7 +38,7 @@ export const CreateTag = () => {
             onChange={(e, { value }) => setName(value)}
           />
           <Button primary type="submit" onClick={handleOnClick}>
-            Criar tarefa
+            Criar tag
           </Button>
           <Button secondary floated="right" onClick={() => setOpen(false)}>
             Cancelar
