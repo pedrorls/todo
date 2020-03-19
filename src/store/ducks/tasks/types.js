@@ -4,6 +4,6 @@ export const TasksTypes = {
   SUCCESS_CREATE_TASK: "@tasks/successCreateTask",
   UPDATE_TASK: "@tasks/updateTask",
   DELETE_TASK: "@tasks/deleteTask",
-  SUCCESS_DELETE_TASK: "@tasks/deleteTask",
+  SUCCESS_DELETE_TASK: "@tasks/successDeleteTask",
   SUCCESS: "@tasks/success"
 };
