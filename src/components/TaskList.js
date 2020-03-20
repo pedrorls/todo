@@ -5,38 +5,36 @@ import { getTasksList } from "../store/ducks/tasks/selectors";
 import { TasksActions } from "../store/ducks/tasks/actions";
 import { EditTask } from "./modals";
 
-export const TaskList = () => {
+export const TaskList = ({ filterBy }) => {
   const dispatch = useDispatch();
-  const taskList = useSelector(getTasksList);
+  const taskList = useSelector(getTasksList(filterBy));
 
   return (
     <List>
-      {taskList
-        .filter(task => !task.finished)
-        .map(task => (
-          <List.Item key={task.id}>
-            <List.Content floated="right">
-              <EditTask task={task} />
-              <Button
-                icon
-                basic
-                color="red"
-                onClick={() => dispatch(TasksActions.deleteTask(task))}
-              >
-                <Icon name="trash" />
-              </Button>
-            </List.Content>
-            <List.Content>
-              <Checkbox
-                label={task.description}
-                checked={task.finished}
-                onChange={() =>
-                  dispatch(TasksActions.updateTask({ ...task, finished: true }))
-                }
-              />
-            </List.Content>
-          </List.Item>
-        ))}
+      {taskList.map(task => (
+        <List.Item key={task.id}>
+          <List.Content floated="right">
+            <EditTask task={task} />
+            <Button
+              icon
+              basic
+              color="red"
+              onClick={() => dispatch(TasksActions.deleteTask(task))}
+            >
+              <Icon name="trash" />
+            </Button>
+          </List.Content>
+          <List.Content>
+            <Checkbox
+              label={task.description}
+              checked={task.finished}
+              onChange={() =>
+                dispatch(TasksActions.updateTask({ ...task, finished: true }))
+              }
+            />
+          </List.Content>
+        </List.Item>
+      ))}
     </List>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
 
@@ -10,6 +10,7 @@ import { TaskList } from "./TaskList";
 
 export const Base = () => {
   const dispatch = useDispatch();
+  const [filterBy, setFilterBy] = useState("all");
 
   useEffect(() => {
     dispatch(TagsActions.getTags());
@@ -39,12 +40,12 @@ export const Base = () => {
         </Grid.Row>
         <Grid.Row columns={1}>
           <Grid.Column width={12}>
-            <Filters />
+            <Filters setFilterBy={setFilterBy} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
           <Grid.Column width={12}>
-            <TaskList />
+            <TaskList filterBy={filterBy} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
