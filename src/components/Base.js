@@ -11,7 +11,7 @@ import { TaskList } from "./TaskList";
 
 export const Base = () => {
   const dispatch = useDispatch();
-  const [filterBy, setFilterBy] = useState("all");
+  const [filterBy, setFilterBy] = useState("undone");
   const [search, setSearch] = useState("");
 
   useEffect(() => {

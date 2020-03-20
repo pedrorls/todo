@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Popup, Button, Icon, Form } from "semantic-ui-react";
 import { getTagsList } from "../../store/ducks/tags/selectors";
 import { TasksActions } from "../../store/ducks/tasks/actions";
 
-export const AddTask = () => {
+export const AddTask = ({ task, editMode }) => {
+  const label = editMode ? "Editar Tarefa" : "Criar Tarefa";
   const dispatch = useDispatch();
   const tagsList = useSelector(getTagsList);
   const [open, setOpen] = useState(false);
@@ -19,8 +20,33 @@ export const AddTask = () => {
     text: tag.name
   }));
 
+  useEffect(() => {
+    if (task !== undefined) {
+      console.log(task);
+      setDescription(task.description);
+      setDueDate(task.dueDate);
+      setTags(task.tags);
+      setReminder(task.reminder);
+    }
+  }, [task]);
+
   const handleSubmit = () => {
-    dispatch(TasksActions.createTask({ description, dueDate, tags, reminder }));
+    if (editMode) {
+      dispatch(
+        TasksActions.updateTask({
+          ...task,
+          description,
+          dueDate,
+          tags,
+          reminder
+        })
+      );
+    } else {
+      dispatch(
+        TasksActions.createTask({ description, dueDate, tags, reminder })
+      );
+    }
+
     setOpen(false);
   };
 
@@ -32,13 +58,13 @@ export const AddTask = () => {
       trigger={
         <Button basic primary icon onClick={() => setOpen(true)}>
           <Popup
-            trigger={<Icon name="plus" />}
-            content="Adicionar nova tarefa"
+            trigger={<Icon name={editMode ? "edit" : "plus"} />}
+            content={label}
           />
         </Button>
       }
     >
-      <Modal.Header>Criar nova tarefa</Modal.Header>
+      <Modal.Header>{label}</Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Input
@@ -47,6 +73,7 @@ export const AddTask = () => {
             label="Descrição"
             placeholder="Descrição"
             type="text"
+            value={description}
             onChange={(e, { value }) => setDescription(value)}
           />
           <Form.Input
@@ -55,6 +82,7 @@ export const AddTask = () => {
             label="Data de Vencimento"
             placeholder="Data de Vencimento"
             type="datetime-local"
+            value={dueDate}
             onChange={(e, { value }) => setDueDate(value)}
           />
           <Form.Dropdown
@@ -65,6 +93,7 @@ export const AddTask = () => {
             label="Tags"
             placeholder="Tags"
             options={tagsOptions}
+            value={tags}
             onChange={(e, { value }) => setTags(value)}
           />
           <Form.Dropdown
@@ -78,10 +107,11 @@ export const AddTask = () => {
               { value: 24, key: "24h", text: "1 dia antes" },
               { value: 48, key: "48hr", text: "2 dias antes" }
             ]}
+            value={reminder}
             onChange={(e, { value }) => setReminder(value)}
           />
           <Button primary type="submit" onClick={handleSubmit}>
-            Criar tarefa
+            {label}
           </Button>
           <Button secondary onClick={() => setOpen(false)} floated="right">
             Cancelar
