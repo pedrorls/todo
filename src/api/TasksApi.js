@@ -19,21 +19,22 @@ export const TasksApi = {
     const createdAt = new Date();
     const dueDate = new Date(value.dueDate);
     const reminder = new Date(dueDate);
-    reminder.setHours(-value.reminder);
+    reminder.setMinutes(reminder.getMinutes() - value.reminder);
 
     const data = {
       description: value.description,
       tags: value.tags,
-      dueDate,
-      reminder,
-      createdAt
+      dueDate: dueDate.getTime(),
+      reminder: reminder.getTime(),
+      createdAt: createdAt.getTime()
     };
     const response = await api.post("", data);
     return response.data;
   },
 
-  updateTask: async (task, values) => {
-    const response = await api.patch(`/${task.id}/`, values);
+  updateTask: async (task, value) => {
+    const data = { ...task, ...value };
+    const response = await api.patch(`/${task.id}/`, data);
     return response.data;
   },
 

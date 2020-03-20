@@ -28,3 +28,12 @@ export function* deleteTask(param) {
     throw new Error(error);
   }
 }
+
+export function* updateTask(param) {
+  try {
+    const response = yield call(TasksApi.updateTask, param.payload);
+    yield put(TasksActions.successUpdateTask(response));
+  } catch (error) {
+    throw new Error(error);
+  }
+}

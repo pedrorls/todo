@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { List, Button, Icon, Checkbox } from "semantic-ui-react";
 import { getTasksList } from "../store/ducks/tasks/selectors";
 import { TasksActions } from "../store/ducks/tasks/actions";
+import { EditTask } from "./modals";
 
 export const TaskList = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,7 @@ export const TaskList = () => {
       {taskList.map(task => (
         <List.Item key={task.id}>
           <List.Content floated="right">
-            <Button icon basic>
-              <Icon name="edit" />
-            </Button>
+            <EditTask task={task} />
             <Button
               icon
               basic

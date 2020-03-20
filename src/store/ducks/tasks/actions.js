@@ -16,6 +16,11 @@ export const TasksActions = {
     payload: params
   }),
 
+  updateTask: params => ({
+    type: TasksTypes.UPDATE_TASK,
+    payload: params
+  }),
+
   success: response => ({
     type: TasksTypes.SUCCESS,
     payload: response
@@ -28,6 +33,11 @@ export const TasksActions = {
 
   successDeleteTask: response => ({
     type: TasksTypes.SUCCESS_DELETE_TASK,
+    payload: response
+  }),
+
+  successUpdateTask: response => ({
+    type: TasksTypes.SUCCESS_UPDATE_TASK,
     payload: response
   })
 };
