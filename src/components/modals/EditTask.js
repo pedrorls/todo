@@ -28,7 +28,7 @@ export const EditTask = ({ task }) => {
 
   const handleSubmit = () => {
     dispatch(
-      TasksActions.updateTask(task, { description, dueDate, tags, reminder })
+      TasksActions.updateTask({ ...task, description, dueDate, tags, reminder })
     );
     setOpen(false);
   };

@@ -32,9 +32,8 @@ export const TasksApi = {
     return response.data;
   },
 
-  updateTask: async (task, value) => {
-    const data = { ...task, ...value };
-    const response = await api.patch(`/${task.id}/`, data);
+  updateTask: async task => {
+    const response = await api.put(`/${task.id}`, task);
     return response.data;
   },
 

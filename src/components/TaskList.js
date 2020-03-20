@@ -11,24 +11,32 @@ export const TaskList = () => {
 
   return (
     <List>
-      {taskList.map(task => (
-        <List.Item key={task.id}>
-          <List.Content floated="right">
-            <EditTask task={task} />
-            <Button
-              icon
-              basic
-              color="red"
-              onClick={() => dispatch(TasksActions.deleteTask(task))}
-            >
-              <Icon name="trash" />
-            </Button>
-          </List.Content>
-          <List.Content>
-            <Checkbox label={task.description} />
-          </List.Content>
-        </List.Item>
-      ))}
+      {taskList
+        .filter(task => !task.finished)
+        .map(task => (
+          <List.Item key={task.id}>
+            <List.Content floated="right">
+              <EditTask task={task} />
+              <Button
+                icon
+                basic
+                color="red"
+                onClick={() => dispatch(TasksActions.deleteTask(task))}
+              >
+                <Icon name="trash" />
+              </Button>
+            </List.Content>
+            <List.Content>
+              <Checkbox
+                label={task.description}
+                checked={task.finished}
+                onChange={() =>
+                  dispatch(TasksActions.updateTask({ ...task, finished: true }))
+                }
+              />
+            </List.Content>
+          </List.Item>
+        ))}
     </List>
   );
 };
