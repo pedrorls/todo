@@ -18,14 +18,12 @@ export const TasksApi = {
   createTask: async value => {
     const createdAt = new Date();
     const dueDate = new Date(value.dueDate);
-    const reminder = new Date(dueDate);
-    reminder.setMinutes(reminder.getMinutes() - value.reminder);
 
     const data = {
       description: value.description,
       tags: value.tags,
       dueDate: dueDate.getTime(),
-      reminder: reminder.getTime(),
+      reminder: value.reminder,
       createdAt: createdAt.getTime()
     };
     const response = await api.post("", data);

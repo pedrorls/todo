@@ -103,7 +103,7 @@ export const AddTask = ({ task, editMode }) => {
             placeholder="Lembrete"
             options={[
               { value: 1, key: "1hr", text: "1 hora antes" },
-              { value: 2, key: "2hr", text: "2  hora antes" },
+              { value: 2, key: "2hr", text: "2  horas antes" },
               { value: 24, key: "24h", text: "1 dia antes" },
               { value: 48, key: "48hr", text: "2 dias antes" }
             ]}

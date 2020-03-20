@@ -13,9 +13,9 @@ export const Filters = ({ setFilterBy }) => {
       <span>
         <Header as="h5">Mostrar: </Header>
         <Button.Group basic compact>
-          <Button onClick={() => setFilterBy("all")}>Todos</Button>
-          <Button onClick={() => setFilterBy("done")}>Finalizados</Button>
           <Button onClick={() => setFilterBy("undone")}>Não finalizados</Button>
+          <Button onClick={() => setFilterBy("done")}>Finalizados</Button>
+          <Button onClick={() => setFilterBy("all")}>Todos</Button>
         </Button.Group>
       </span>
       <span>
