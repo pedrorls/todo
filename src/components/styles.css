@@ -1,0 +1,11 @@
+.base-container {
+  margin-top: 10px;
+}
+
+.showFilter > h5 {
+  margin-bottom: 0 !important;
+}
+
+.showFilter {
+  margin-top: 10px;
+}

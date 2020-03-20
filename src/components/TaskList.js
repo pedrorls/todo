@@ -25,15 +25,21 @@ export const TaskList = ({ filterBy }) => {
             </Button>
           </List.Content>
           <List.Content>
-            <Checkbox
-              label={task.description}
-              checked={task.finished}
-              onChange={() =>
-                dispatch(
-                  TasksActions.updateTask({ ...task, finished: !task.finished })
-                )
-              }
-            />
+            <span style={{ float: "left", margin: "10px 10px 10px 0" }}>
+              <Checkbox
+                checked={task.finished}
+                onChange={() =>
+                  dispatch(
+                    TasksActions.updateTask({
+                      ...task,
+                      finished: !task.finished
+                    })
+                  )
+                }
+              />
+            </span>
+            <List.Header as="h4">{task.description}</List.Header>
+            <List.Description>{`Criado em: ${task.createdAt}`}</List.Description>
           </List.Content>
         </List.Item>
       ))}

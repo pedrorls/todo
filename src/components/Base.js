@@ -22,7 +22,7 @@ export const Base = () => {
   const handleChange = debounce(setSearch, 500);
 
   return (
-    <Container>
+    <Container className="base-container">
       <Grid centered>
         <Grid.Row>
           <Grid.Column width={12}>
