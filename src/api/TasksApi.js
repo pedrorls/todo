@@ -10,8 +10,8 @@ export const TasksApi = {
     return response.data;
   },
 
-  listTasks: async () => {
-    const response = await api.get("");
+  listTasks: async param => {
+    const response = await api.get(`?search=${param}`);
     return response.data;
   },
 

@@ -2,9 +2,9 @@ import { call, put } from "@redux-saga/core/effects";
 import { TasksApi } from "../../../api/";
 import { TasksActions } from "./actions";
 
-export function* listTasks() {
+export function* listTasks(param) {
   try {
-    const response = yield call(TasksApi.listTasks);
+    const response = yield call(TasksApi.listTasks, param.payload);
     yield put(TasksActions.success(response));
   } catch (error) {
     throw new Error(error);

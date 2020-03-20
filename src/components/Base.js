@@ -1,3 +1,4 @@
+import { debounce } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
@@ -11,11 +12,14 @@ import { TaskList } from "./TaskList";
 export const Base = () => {
   const dispatch = useDispatch();
   const [filterBy, setFilterBy] = useState("all");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(TagsActions.getTags());
-    dispatch(TasksActions.getTasks());
-  }, [dispatch]);
+    dispatch(TasksActions.getTasks(search));
+  }, [dispatch, search]);
+
+  const handleChange = debounce(setSearch, 500);
 
   return (
     <Container>
@@ -29,7 +33,12 @@ export const Base = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={10} textAlign="center" verticalAlign="middle">
-            <Input fluid icon="search" placeholder="Pesquisar tarefas" />
+            <Input
+              fluid
+              icon="search"
+              placeholder="Pesquisar tarefas"
+              onChange={(e, { value }) => handleChange(value)}
+            />
           </Grid.Column>
           <Grid.Column width={2}>
             <Button.Group>

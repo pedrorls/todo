@@ -1,9 +1,9 @@
 import { TasksTypes } from "./types";
 
 export const TasksActions = {
-  getTasks: () => ({
+  getTasks: params => ({
     type: TasksTypes.GET_TASKS,
-    payload: undefined
+    payload: params
   }),
 
   createTask: params => ({
