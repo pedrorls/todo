@@ -1,13 +1,21 @@
+import { groupBy } from "lodash";
+
 const filterAll = state => {
-  return state.tasks.list;
+  return groupBy(state.tasks.list, "dueDate");
 };
 
 const filterDone = state => {
-  return state.tasks.list.filter(task => task.finished);
+  return groupBy(
+    state.tasks.list.filter(task => task.finished),
+    "dueDate"
+  );
 };
 
 const filterUndone = state => {
-  return state.tasks.list.filter(task => !task.finished);
+  return groupBy(
+    state.tasks.list.filter(task => !task.finished),
+    "dueDate"
+  );
 };
 
 export const getTasksList = filterBy => {

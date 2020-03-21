@@ -13,14 +13,14 @@ export const Filters = ({ setFilterBy }) => {
           <Button onClick={() => setFilterBy("all")}>Todos</Button>
         </Button.Group>
       </div>
-      <div className="showFilter">
+      {/* <div className="showFilter">
         <Header as="h5">Visualizar por:</Header>
         <Button.Group basic compact>
-          <Button>Dia</Button>
+          <Button onClick={() => setFilterBy("day")}>Dia</Button>
           <Button>Semana</Button>
           <Button>Mês</Button>
         </Button.Group>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -17,8 +17,8 @@ export const TasksApi = {
       description: task.description,
       finished: task.finished,
       reminder: task.reminded,
-      dueDate: new Date(task.dueDate).toDateString(),
-      createdAt: new Date(task.createdAt).toDateString()
+      dueDate: new Date(task.dueDate).toLocaleDateString("pt-BR"),
+      createdAt: new Date(task.createdAt).toLocaleDateString("pt-BR")
     }));
   },
 
