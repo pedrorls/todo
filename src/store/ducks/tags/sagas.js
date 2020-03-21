@@ -14,7 +14,16 @@ export function* listTags() {
 export function* createTag(param) {
   try {
     const response = yield call(TagsApi.createTag, param.payload);
-    yield put(TagsActions.success_create_tag(response));
+    yield put(TagsActions.successCreateTag(response));
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export function* deleteTag(param) {
+  try {
+    const response = yield call(TagsApi.deleteTag, param.payload);
+    yield put(TagsActions.successDeleteTag(response));
   } catch (error) {
     throw new Error(error);
   }

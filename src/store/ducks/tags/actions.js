@@ -11,13 +11,23 @@ export const TagsActions = {
     payload: params
   }),
 
+  deleteTag: params => ({
+    type: TagsTypes.DELETE_TAG,
+    payload: params
+  }),
+
   success: response => ({
     type: TagsTypes.SUCCESS,
     payload: response
   }),
 
-  success_create_tag: response => ({
+  successCreateTag: response => ({
     type: TagsTypes.SUCCESS_CREATE_TAG,
+    payload: response
+  }),
+
+  successDeleteTag: response => ({
+    type: TagsTypes.SUCCESS_DELETE_TAG,
     payload: response
   })
 };
