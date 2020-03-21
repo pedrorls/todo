@@ -5,7 +5,7 @@ import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
 
 import { TagsActions } from "../store/ducks/tags/actions";
 import { TasksActions } from "../store/ducks/tasks/actions";
-import { AddTask, CreateTag } from "./modals";
+import { TaskModal, TagModal } from "./modals";
 import { Filters } from "./Filters";
 import { TaskList } from "./TaskList";
 
@@ -41,10 +41,8 @@ export const Base = () => {
             />
           </Grid.Column>
           <Grid.Column width={2} textAlign="right">
-            <Button.Group>
-              <AddTask />
-              <CreateTag />
-            </Button.Group>
+            <TaskModal />
+            <TagModal />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>

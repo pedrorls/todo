@@ -4,7 +4,7 @@ import { Modal, Popup, Button, Icon, Form } from "semantic-ui-react";
 import { getTagsList } from "../../store/ducks/tags/selectors";
 import { TasksActions } from "../../store/ducks/tasks/actions";
 
-export const AddTask = ({ task, editMode }) => {
+export const TaskModal = ({ task, editMode }) => {
   const label = editMode ? "Editar Tarefa" : "Criar Tarefa";
   const dispatch = useDispatch();
   const tagsList = useSelector(getTagsList);

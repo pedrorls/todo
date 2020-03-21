@@ -12,7 +12,14 @@ export const TasksApi = {
 
   listTasks: async param => {
     const response = await api.get(`?search=${param}`);
-    return response.data;
+    return response.data.map(task => ({
+      id: task.id,
+      description: task.description,
+      finished: task.finished,
+      reminder: task.reminded,
+      dueDate: new Date(task.dueDate).toDateString(),
+      createdAt: new Date(task.createdAt).toDateString()
+    }));
   },
 
   createTask: async value => {

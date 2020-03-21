@@ -1,2 +1,2 @@
-export { AddTask } from "./AddTask";
-export { CreateTag } from "./CreateTag";
+export { TaskModal } from "./TaskModal";
+export { TagModal } from "./TagModal";

@@ -3,7 +3,7 @@ import { Modal, Popup, Button, Icon, Tab } from "semantic-ui-react";
 import { TagsList } from "../TagList";
 import { TagForm } from "../TagForm";
 
-export const CreateTag = () => {
+export const TagModal = () => {
   const [open, setOpen] = useState(false);
   const panes = [
     {
