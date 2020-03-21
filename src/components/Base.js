@@ -27,7 +27,7 @@ export const Base = () => {
         <Grid.Row>
           <Grid.Column width={12}>
             <Header as="h1" textAlign="center">
-              My Task list
+              Lista de tarefas
             </Header>
           </Grid.Column>
         </Grid.Row>

@@ -24,8 +24,10 @@ export const TaskList = ({ filterBy }) => {
               <Icon name="trash" />
             </Button>
           </List.Content>
-          <List.Content>
-            <span style={{ float: "left", margin: "10px 10px 10px 0" }}>
+          <List.Content
+            style={{ textDecoration: task.finished && "line-through " }}
+          >
+            <span className="checkbox">
               <Checkbox
                 checked={task.finished}
                 onChange={() =>
