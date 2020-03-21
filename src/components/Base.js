@@ -40,7 +40,7 @@ export const Base = () => {
               onChange={(e, { value }) => handleChange(value)}
             />
           </Grid.Column>
-          <Grid.Column width={2}>
+          <Grid.Column width={2} textAlign="right">
             <Button.Group>
               <AddTask />
               <CreateTag />
