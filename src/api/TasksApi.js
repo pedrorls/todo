@@ -34,7 +34,14 @@ export const TasksApi = {
       createdAt: createdAt.getTime()
     };
     const response = await api.post("", data);
-    return response.data;
+    return {
+      id: response.data.id,
+      description: response.data.description,
+      finished: response.data.finished,
+      reminder: response.data.reminded,
+      dueDate: new Date(response.data.dueDate).toLocaleDateString("pt-BR"),
+      createdAt: new Date(response.data.createdAt).toLocaleDateString("pt-BR")
+    };
   },
 
   updateTask: async task => {

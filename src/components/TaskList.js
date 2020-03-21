@@ -8,7 +8,8 @@ import { TaskModal } from "./modals";
 export const TaskList = ({ filterBy }) => {
   const dispatch = useDispatch();
   const taskList = useSelector(getTasksList(filterBy));
-  const keys = Object.keys(taskList);
+  const compare = (a, b) => new Date(a) - new Date(b);
+  const keys = Object.keys(taskList).sort(compare);
 
   return (
     <>
