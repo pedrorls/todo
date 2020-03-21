@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Modal, Popup, Button, Icon, Form } from "semantic-ui-react";
-import { TagsActions } from "../../store/ducks/tags/actions";
+import { Modal, Popup, Button, Icon, Tab } from "semantic-ui-react";
+import { TagsList } from "../TagList";
+import { TagForm } from "../TagForm";
 
 export const CreateTag = () => {
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
-
-  const handleOnClick = () => {
-    if (name !== "") {
-      setOpen(false);
-      dispatch(TagsActions.createTag(name));
+  const panes = [
+    {
+      menuItem: "Criar tag",
+      render: () => <TagForm setOpen={setOpen} />
+    },
+    {
+      menuItem: "Lista de tags",
+      render: () => <TagsList />
     }
-  };
+  ];
 
   return (
     <Modal
@@ -22,28 +23,13 @@ export const CreateTag = () => {
       open={open}
       trigger={
         <Button primary basic icon onClick={() => setOpen(true)}>
-          <Popup trigger={<Icon name="tag" />} content="Criar nova tag" />
+          <Popup trigger={<Icon name="tag" />} content="Visualizar tags" />
         </Button>
       }
     >
-      <Modal.Header>Criar nova tag</Modal.Header>
+      <Modal.Header>Tags</Modal.Header>
       <Modal.Content>
-        <Form>
-          <Form.Input
-            fluid
-            id="form-input-tagname"
-            label="Nome"
-            placeholder="Nome da tag"
-            type="text"
-            onChange={(e, { value }) => setName(value)}
-          />
-          <Button primary type="submit" onClick={handleOnClick}>
-            Criar tag
-          </Button>
-          <Button secondary floated="right" onClick={() => setOpen(false)}>
-            Cancelar
-          </Button>
-        </Form>
+        <Tab menu={{ secondary: true }} panes={panes} />
       </Modal.Content>
     </Modal>
   );

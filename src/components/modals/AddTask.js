@@ -22,7 +22,6 @@ export const AddTask = ({ task, editMode }) => {
 
   useEffect(() => {
     if (task !== undefined) {
-      console.log(task);
       setDescription(task.description);
       setDueDate(task.dueDate);
       setTags(task.tags);
