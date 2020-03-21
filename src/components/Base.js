@@ -1,7 +1,7 @@
 import { debounce } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Container, Grid, Header, Input, Button } from "semantic-ui-react";
+import { Container, Grid, Header, Input } from "semantic-ui-react";
 
 import { TagsActions } from "../store/ducks/tags/actions";
 import { TasksActions } from "../store/ducks/tasks/actions";

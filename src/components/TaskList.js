@@ -13,12 +13,11 @@ export const TaskList = ({ filterBy }) => {
   return (
     <>
       {keys.map(key => (
-        <>
+        <React.Fragment key={key}>
           <Header>{key}</Header>
           {taskList[key].map(task => (
-            <List>
-              <List.Item key={task.id}>
-                {console.log(task)}
+            <List key={task.id}>
+              <List.Item>
                 <List.Content floated="right">
                   <TaskModal task={task} editMode />
                   <Button
@@ -49,12 +48,12 @@ export const TaskList = ({ filterBy }) => {
                     />
                   </span>
                   <List.Header as="h4">{task.description}</List.Header>
-                  <List.Description>{`Criado em: ${task.createdAt}`}</List.Description>
+                  <List.Description>{`Criado em: ${task.createdAt} - Vence em: ${task.dueDate}`}</List.Description>
                 </List.Content>
               </List.Item>
             </List>
           ))}
-        </>
+        </React.Fragment>
       ))}
     </>
   );
